@@ -43,7 +43,7 @@ public:
 void Graph::Dijkstra(int src)
 {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> q;
-    // {distance, source}
+    // {distance, source} -- arrange based on minimum distance
     q.push({0, src});
     vector<int> mindistance(V + 1, 1e9);
     mindistance[src] = 0;
@@ -51,6 +51,7 @@ void Graph::Dijkstra(int src)
     {
         int csrc = q.top().second;
         q.pop();
+
         for (auto neigh : adj[csrc])
         {
             int cdest = neigh.first;
@@ -61,6 +62,7 @@ void Graph::Dijkstra(int src)
                 q.push({mindistance[cdest], cdest});
             }
         }
+
         for (int i = 0; i < mindistance.size(); i++)
             cout << i << " --> " << mindistance[i] << '\n';
     }
