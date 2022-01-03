@@ -42,6 +42,8 @@ public:
 };
 void Graph::Dijkstra(int src)
 {
+
+    /*  Single Source Shortest Path  */
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> q;
     // {distance, source} -- arrange based on minimum distance
     q.push({0, src});
@@ -62,7 +64,6 @@ void Graph::Dijkstra(int src)
                 q.push({mindistance[cdest], cdest});
             }
         }
-
         for (int i = 0; i < mindistance.size(); i++)
             cout << i << " --> " << mindistance[i] << '\n';
     }
